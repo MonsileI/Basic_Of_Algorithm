@@ -12,12 +12,11 @@ public class rightbiggersoo {
 		Stack<Integer> ans = new Stack<>();
 		Stack<Integer> tmp = new Stack<>();
 		
-		
-		for(int i = A.length-1 ; i > -1 ; i--) {
+		for(int i = A.length-1; i > -1 ; i--) {
 			
-			int a = A[i];
+			int num = A[i];
 			
-			while(!tmp.isEmpty() && a >= tmp.peek()) {
+			while(!tmp.isEmpty() && (num >= tmp.peek())) {
 				tmp.pop();
 			}
 			
@@ -26,16 +25,13 @@ public class rightbiggersoo {
 			}else {
 				ans.add(tmp.peek());
 			}
-			tmp.add(a);
 			
+			tmp.add(num);
 			
 		}
 		
+		for(int i = 0 ; i < answer.length;i++) System.out.println(ans.pop());
 		
-		for(int i =0;i<answer.length;i++) answer[i] = ans.pop();
-		
-		
-		for(int i : answer)System.out.println(i);
 	}
 
 }
