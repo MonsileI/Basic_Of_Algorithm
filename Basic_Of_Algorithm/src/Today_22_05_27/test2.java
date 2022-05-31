@@ -1,4 +1,4 @@
-package Today22_05_27;
+package Today_22_05_27;
 
 public interface test2 {
 

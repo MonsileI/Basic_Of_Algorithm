@@ -1,4 +1,4 @@
-package Today22_05_27;
+package Today_22_05_27;
 
 import java.util.Arrays;
 import java.util.Comparator;
