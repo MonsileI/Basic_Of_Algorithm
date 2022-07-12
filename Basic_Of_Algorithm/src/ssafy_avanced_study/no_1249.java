@@ -8,6 +8,8 @@ import java.util.LinkedList;
 
 public class no_1249 {
 	
+	static int answer = Integer.MAX_VALUE;
+	
 
 	public static void main(String[] args) throws Exception {
 		
@@ -38,48 +40,47 @@ public class no_1249 {
 			
 			int[][]temp = new int[size][size];
 			temp[0][0] = 0;
-			int [][] move = {{1,0},{0,1},{-1,0},{0,-1}};
+		
 			
-			int answer = Integer.MAX_VALUE;
+		
 			
-			while(!q.isEmpty()) {
-				
-				int [] cur = q.poll();
-				int i = cur[0];
-				int j = cur[1];
-				
-				for(int d=0;d<4;d++) {
-					
-					int newI = i + move[d][0];
-					int newJ = j + move[d][1];
-					
-					
-					if(newI<0||newJ<0||size-1<newI||size-1<newJ) continue;
-					
-
-					temp[newI][newJ] = map[newI][newJ] + temp[i][j];
-					
-					q.add(new int[] {newI,newJ});
-					
-					if(newI==size-1 && newJ==size-1) {
-
-						answer = Math.min(answer, temp[newI][newJ]);
-					}
-					
-					
-					
-				}
-				
-				
-				
-			}
-			
-			
+			dfs(0,0,temp,map,size);
 			
 			System.out.println(answer);
+			
 		}
 		
 		
+	}
+	static void dfs(int i,int j,int[][]temp,int[][]map,int size) {
+		
+		
+		if(map[i][j]>=answer) return;
+		
+		int [][] move = {{1,0},{0,1},{-1,0},{0,-1}};
+		
+		
+		if(i==size-1 && j ==size-1) {
+			answer = Math.min(answer, temp[size-1][size-1]);
+			return;
+		}
+		
+		for(int d=0;d<4;d++) {
+			
+			int newI = i + move[d][0];
+			int newJ = j + move[d][1];
+			
+			if(newI<0||newJ<0||size-1<newI||size-1<newJ) continue;
+			
+			
+			if(temp[newI][newJ]==0) {
+				temp[newI][newJ] = temp[i][j] + map[newI][newJ];
+				dfs(newI,newJ,temp,map,size);
+				temp[newI][newJ] = 0;
+			}
+			
+			
+		}
 	}
 	
 }
