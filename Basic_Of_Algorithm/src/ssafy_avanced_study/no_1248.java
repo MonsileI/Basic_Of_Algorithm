@@ -6,7 +6,7 @@ import java.io.InputStreamReader;
 import java.util.Queue;
 import java.util.LinkedList;
 
-public class no_1249 {
+public class no_1248 {
 	
 	
 	
